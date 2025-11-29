@@ -5,6 +5,9 @@ Attendance monitoring web app project for web technologies course.
 
 This project implements a web application for monitoring attendance using text or QR access codes.
 
+**How to run the application**
+The app will be run using the following instructions. Using the app.js ......(to be added)
+
 **Features**
 
 Event organizer (EO) can create an event group
