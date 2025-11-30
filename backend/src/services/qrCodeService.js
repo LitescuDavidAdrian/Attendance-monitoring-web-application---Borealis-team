@@ -1,10 +1,9 @@
-import { text } from 'express';
 import qr from 'qrcode';
 
 export const generateQrCode = async (text)=>
 {
     try{
-        const qrCodeDataURL = await qr.qrCodeDataURL(text);
+        const qrCodeDataURL = await qr.toDataURL(text);
         return qrCodeDataURL;
     }
     catch (err){
