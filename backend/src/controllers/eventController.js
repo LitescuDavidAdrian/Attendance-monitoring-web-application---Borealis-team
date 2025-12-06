@@ -16,7 +16,7 @@ async function getEventById(id) {
 
 async function getEventWithAttendances(id) {
     return await Event.findByPk(id, {
-        include: ["attendances"]
+        include: ["Attendances"]
     });
 }
 
