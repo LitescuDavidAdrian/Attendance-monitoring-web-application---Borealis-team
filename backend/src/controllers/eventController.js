@@ -1,5 +1,6 @@
 import Event from "../entities/Event.js";
 import Attendance from "../entities/Attendance.js";
+import { Op as LikeOp } from "sequelize";
 
 async function createEvent(eventData) {
     return await Event.create(eventData);
