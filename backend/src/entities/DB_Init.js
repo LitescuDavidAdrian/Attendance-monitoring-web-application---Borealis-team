@@ -27,7 +27,7 @@ let conn;
 function FK_Config(){
 
     // -------------------------- 1-n --------------------------
-    Event.hasMany(Attendance, { as: 'Attendances', foreignKey: 'EventID' });
+    Event.hasMany(Attendance, { as: 'Attendances', foreignKey: 'EventId' });
     Attendance.belongsTo(Event, { foreignKey: 'EventId' });
 
 }

@@ -20,6 +20,11 @@ const Attendance = db.define("Attendance",
         allowNull: false
     },
 
+    EventId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+
     Timestamp: {
         type: Sequelize.DATE,
         allowNull: false,

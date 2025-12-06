@@ -3,6 +3,7 @@ import env from 'dotenv';
 import DB_Init from './entities/DB_Init.js';
 import createDBRouter from './routes/createDbRouter.js';
 import attendanceRouter from './routes/attendanceRouter.js';
+import eventRouter from './routes/eventRouter.js';
 
 env.config();
 
