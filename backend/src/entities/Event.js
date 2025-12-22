@@ -48,9 +48,9 @@ const Event = db.define("Event",
     status: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "CLOSED",     
+        defaultValue: "CLOSED",
         validate: {
-            isIn: [["OPEN", "CLOSED"]]  
+            isIn: [["OPEN", "CLOSED"]]
         }
     }
 

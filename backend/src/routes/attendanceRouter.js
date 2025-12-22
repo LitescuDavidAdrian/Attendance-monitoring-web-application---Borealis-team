@@ -5,17 +5,17 @@ import { createAttendance, getAttendances, getAttendanceById, getAttendanceWithE
 let attendanceRouter = express.Router();
 
 // CREATE
-attendanceRouter.route('/Attendance').post(async (req, res) => {
+attendanceRouter.route('/attendance').post(async (req, res) => {
   return res.json(await createAttendance(req.body));
 });
 
 // GET ALL
-attendanceRouter.route('/Attendance').get(async (req, res) => {
+attendanceRouter.route('/attendance').get(async (req, res) => {
   return res.json(await getAttendances());
 });
 
 // GET BY ID
-attendanceRouter.route('/Attendance/:id').get(async (req, res) => {
+attendanceRouter.route('/attendance/:id').get(async (req, res) => {
   const attendance = await getAttendanceById(req.params.id);
 
   if (attendance)

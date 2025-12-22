@@ -1,18 +1,20 @@
 import express from 'express';
-import {createEvent, getEventById, getEvents, getEventWithAttendances, deleteEvent, updateEvent, getEventWithFilterAndPagination} from "../controllers/eventController.js"
+import {createEvent, getEventById, getEvents, getEventWithAttendances, deleteEvent, updateEvent, getEventWithFilterAndPagination} from "../controllers/eventController.js";
+import { getQRCode } from "../services/exportService.js";
+import { exportEventAttendance } from "../services/attendanceExportService.js";
 
 let eventRouter = express.Router();
   
-eventRouter.route('/Event').post( async (req, res) => {
+eventRouter.route('/event').post( async (req, res) => {
   return res.json(await createEvent(req.body));
 })
 
-eventRouter.route('/Event').get( async (req, res) => {
+eventRouter.route('/event').get( async (req, res) => {
   return res.json(await getEvents());
 })
 
 // Route params vs query params
-eventRouter.route('/Event/:id').get(async (req, res) => {
+eventRouter.route('/event/:id').get(async (req, res) => {
     let event = await getEventById(req.params.id);
     if(event)
         return res.json(event);
@@ -39,5 +41,9 @@ eventRouter.route('/event/:id').put( async (req, res) => {
 eventRouter.route('/eventFilter').get( async (req, res) => {
   return res.json(await getEventWithFilterAndPagination(req.query));
 })
+
+eventRouter.route('/event/:id/qrcode').get(getQRCode);
+
+eventRouter.route('/event/:id/export').get(exportEventAttendance);
 
 export default eventRouter;
