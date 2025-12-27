@@ -2,11 +2,16 @@ import express from 'express';
 import {createEvent, getEventById, getEvents, getEventWithAttendances, deleteEvent, updateEvent, getEventWithFilterAndPagination} from "../controllers/eventController.js";
 import { getQRCode } from "../services/exportService.js";
 import { exportEventAttendance } from "../services/attendanceExportService.js";
+import { generateAccessCode } from "../services/codeGenerator.js";
 
 let eventRouter = express.Router();
-  
+
 eventRouter.route('/event').post( async (req, res) => {
-  return res.json(await createEvent(req.body));
+  const eventData = {
+    ...req.body,
+    accessCode: generateAccessCode()
+  };
+  return res.json(await createEvent(eventData));
 })
 
 eventRouter.route('/event').get( async (req, res) => {
