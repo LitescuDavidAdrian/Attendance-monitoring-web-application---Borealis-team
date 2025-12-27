@@ -94,18 +94,18 @@ function EventDetail() {
                     </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
                     <div>
                         <strong>Start Time:</strong>
-                        <p>{new Date(event.startTime).toLocaleString()}</p>
+                        <p style={{ margin: '0.5rem 0 0 0' }}>{new Date(event.startTime).toLocaleString()}</p>
                     </div>
                     <div>
                         <strong>Duration:</strong>
-                        <p>{event.duration} minutes</p>
+                        <p style={{ margin: '0.5rem 0 0 0' }}>{event.duration} minutes</p>
                     </div>
                     <div>
                         <strong>Access Code:</strong>
-                        <p><code style={{ fontSize: '1.2rem', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px' }}>{event.accessCode}</code></p>
+                        <p style={{ margin: '0.5rem 0 0 0' }}><code style={{ fontSize: '1.2rem', backgroundColor: '#f8f9fa', padding: '0.5rem', borderRadius: '4px', display: 'inline-block' }}>{event.accessCode}</code></p>
                     </div>
                 </div>
 
