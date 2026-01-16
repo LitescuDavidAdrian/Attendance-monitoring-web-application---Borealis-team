@@ -2,9 +2,9 @@ import cron from 'node-cron';
 import Event from '../entities/Event.js';
 import { Op } from 'sequelize';
 
-// Check and update event statuses every minute
+// Check and update event statuses every 10 seconds
 function startEventScheduler() {
-    cron.schedule('* * * * *', async () => {
+    cron.schedule('*/10 * * * * *', async () => {
         try {
             const now = new Date();
 
@@ -51,7 +51,7 @@ function startEventScheduler() {
         }
     });
 
-    console.log('Event scheduler started - checking every minute');
+    console.log('Event scheduler started - checking every 10 seconds');
 }
 
 export { startEventScheduler };

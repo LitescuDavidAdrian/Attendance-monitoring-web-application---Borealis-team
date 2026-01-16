@@ -9,6 +9,8 @@ function EventList() {
 
     useEffect(() => {
         fetchEvents();
+        const interval = setInterval(fetchEvents, 10000);
+        return () => clearInterval(interval);
     }, []);
 
     const fetchEvents = async () => {

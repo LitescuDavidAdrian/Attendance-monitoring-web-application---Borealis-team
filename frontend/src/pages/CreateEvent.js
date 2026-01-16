@@ -8,7 +8,9 @@ function CreateEvent() {
     const [formData, setFormData] = useState({
         name: '',
         description: '',
-        startTime: '',
+        startDate: '',
+        startHour: '09',
+        startMinute: '00',
         duration: 60,
         EventGroupId: ''
     });
@@ -42,7 +44,14 @@ function CreateEvent() {
         setSuccess(false);
 
         try {
-            const dataToSubmit = { ...formData };
+            const startTime = `${formData.startDate}T${formData.startHour}:${formData.startMinute}:00`;
+            const dataToSubmit = {
+                name: formData.name,
+                description: formData.description,
+                startTime: startTime,
+                duration: formData.duration,
+                EventGroupId: formData.EventGroupId
+            };
             if (dataToSubmit.EventGroupId === '') {
                 delete dataToSubmit.EventGroupId;
             }
@@ -93,14 +102,43 @@ function CreateEvent() {
                     </div>
 
                     <div className="form-group">
-                        <label>Start Time *</label>
+                        <label>Start Date *</label>
                         <input
-                            type="datetime-local"
-                            name="startTime"
-                            value={formData.startTime}
+                            type="date"
+                            name="startDate"
+                            value={formData.startDate}
                             onChange={handleChange}
                             required
                         />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Start Time *</label>
+                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                            <select
+                                name="startHour"
+                                value={formData.startHour}
+                                onChange={handleChange}
+                                required
+                                style={{ width: 'auto' }}
+                            >
+                                {Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, '0')).map(hour => (
+                                    <option key={hour} value={hour}>{hour}</option>
+                                ))}
+                            </select>
+                            <span>:</span>
+                            <select
+                                name="startMinute"
+                                value={formData.startMinute}
+                                onChange={handleChange}
+                                required
+                                style={{ width: 'auto' }}
+                            >
+                                {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')).map(minute => (
+                                    <option key={minute} value={minute}>{minute}</option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
 
                     <div className="form-group">

@@ -94,7 +94,7 @@ npm install
 cd backend
 npm start
 ```
-Server will run on http://localhost:3000
+Server will run on http://localhost:9000
 
 **Terminal 2 - Frontend:**
 ```bash
