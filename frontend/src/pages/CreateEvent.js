@@ -16,6 +16,7 @@ function CreateEvent() {
     });
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => {
         fetchEventGroups();
@@ -40,6 +41,8 @@ function CreateEvent() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (submitting) return;
+        setSubmitting(true);
         setError(null);
         setSuccess(false);
 
@@ -63,6 +66,7 @@ function CreateEvent() {
             }, 1500);
         } catch (err) {
             setError(err.response?.data?.error || 'Failed to create event');
+            setSubmitting(false);
         }
     };
 
@@ -171,8 +175,8 @@ function CreateEvent() {
                     </div>
 
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                        <button type="submit" className="btn btn-primary">
-                            Create Event
+                        <button type="submit" className="btn btn-primary" disabled={submitting}>
+                            {submitting ? 'Creating...' : 'Create Event'}
                         </button>
                         <button
                             type="button"
